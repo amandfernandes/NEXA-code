@@ -2,6 +2,8 @@ import { onAuthStateChanged } from "firebase/auth"
 import Base from "./Base"
 import { auth } from "../config/Firebase";
 import { useEffect } from "react";
+import Servicos from "../components/Servicos/Servicos";
+
 
 const Home = () => {
 
@@ -17,11 +19,9 @@ const Home = () => {
   
 
   return (
-    <Base>
-      <h1>
-     Aplicação React Base
-      </h1>
-    </Base>
+      <Base>
+        <Servicos></Servicos>
+      </Base>
   )
 }
 
