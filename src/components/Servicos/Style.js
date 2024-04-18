@@ -1,66 +1,47 @@
-// Style.js
 import styled from 'styled-components';
 
-export const DashboardContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    background-color: #f5f5f5;
+export const TableContainer = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
-export const Title = styled.h1`
-    color: #333;
-    font-size: 24px;
+export const Table = styled.table`
+  width: 100%;
+  max-width: 800px; /* Ajuste este valor conforme necessário */
+  border-collapse: collapse;
+  margin-top: 20px;
 `;
 
-export const RequestsContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+export const Th = styled.th`
+  background-color: #f0f0f0;
+  color: #000;
+  padding: 10px;
 `;
 
-export const RequestTitle = styled.h2`
-    color: #666;
-    font-size: 20px;
+export const Td = styled.td`
+  padding: 10px;
 `;
 
-export const ButtonsContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    margin-top: 10px;
+export const Tr = styled.tr`
+  &:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  &:hover {
+    background-color: #e0e0e0;
+  }
 `;
 
 export const Button = styled.button`
-    margin-right: 10px;
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    cursor: pointer;
-
-    &:hover {
-        background-color: #45a049;
-    }
+background-color: #003154; /* Green */
+border: none;
+color: white;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+border-radius: 12px; /* Ajuste este valor conforme necessário */
 `;
 
-export const RequestDetailsContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-`;
-
-export const Detail = styled.div`
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #ddd;
-`;
-
-export const RequestInfo = styled.p`
-    margin: 0;
-    color: #333;
-`;
-
-export const RequestStatus = styled.p`
-    margin: 0;
-    color: ${props => props.children.includes('Pending') ? 'red' : 'green'};
-`;

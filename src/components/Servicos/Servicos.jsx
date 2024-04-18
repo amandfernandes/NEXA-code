@@ -1,43 +1,41 @@
-import React, { useState } from 'react';
-import { DashboardContainer, Title, RequestsContainer, RequestTitle, ButtonsContainer, Button, RequestDetailsContainer, Detail, RequestInfo, RequestStatus } from './Style';
+import React from 'react';
+import { Table, Th, Td, Tr, Button, TableContainer } from './Style';
+import FiltroComponent from '../Filtro/Filtro';
 
-const Servicos = () => {
-    const [requests, setRequests] = useState([
-        { id: 1, user: 'Clinic', date: '02/04/2024', status: 'Pending' },
-        { id: 2, user: 'Clinic', date: '02/04/2024', status: 'Completed' },
-        // Adicione mais dados conforme necessário
-    ]);
+const Servicos = ({ requests }) => {
+  const [filteredRequests, setFilteredRequests] = React.useState(requests);
 
-    return (
-        <DashboardContainer>
-            <Title>Últimas solicitações</Title>
-            <RequestsContainer>
-                <ButtonsContainer>
-                    <Button>Dosimetria Clínica</Button>
-                    <Button>Dosimetria Pré-Clínica</Button>
-                    <Button>Modelagem Computacional</Button>
-                    <Button>Radiosinoviortese</Button>
-                    <Button>Segmentação e Quantificação</Button>
-                </ButtonsContainer>
-            </RequestsContainer>
-
-            <RequestDetailsContainer>
-                {requests.map((request, index) => (
-                    <Detail key={request.id}>
-                        <RequestInfo>ID: {request.id}</RequestInfo>
-                        <RequestInfo>User: {request.user}</RequestInfo>
-                        <RequestInfo>Data da solicitação: {request.date}</RequestInfo>
-                        <RequestStatus>Status: {request.status}</RequestStatus>
-                        <ButtonsContainer>
-                            {["Acessar"].map((action, i) => (
-                                <Button key={i} onClick={() => console.log(`Request ${index + 1} ${action === 'Acessar'}`)}>{action}</Button>
-                            ))}
-                        </ButtonsContainer>
-                    </Detail>
-                ))}
-            </RequestDetailsContainer>
-        </DashboardContainer>
-    );
+  return (
+    <div>
+      <FiltroComponent requests={requests} setFilteredRequests={setFilteredRequests} />
+      <TableContainer>
+        <Table>
+          <thead>
+            <Tr>
+              <Th>ID</Th>
+              <Th>Título</Th>
+              <Th>Data</Th>
+              <Th>Status</Th>
+              <Th>Formulário</Th>
+              <Th>Ações</Th>
+            </Tr>
+          </thead>
+          <tbody>
+            {filteredRequests.map((request) => (
+              <Tr key={request.id}>
+                <Td>{request.id}</Td>
+                <Td>{request.title}</Td>
+                <Td>{request.date}</Td>
+                <Td>{request.status}</Td>
+                <Td>{request.forms}</Td>
+                <Td><Button>Acessar</Button></Td>
+              </Tr>
+            ))}
+          </tbody>
+        </Table>
+      </TableContainer>
+    </div>
+  );
 };
 
 export default Servicos;
