@@ -1,0 +1,1 @@
+/* Esse componente vai tratar do download de dados */
