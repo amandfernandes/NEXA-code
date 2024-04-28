@@ -1,0 +1,1 @@
+/* Esse componente vai tratar da solicitação detalhada */

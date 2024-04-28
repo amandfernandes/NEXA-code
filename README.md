@@ -1,27 +1,11 @@
-# React Base Project
+#  [![Typing SVG](https://readme-typing-svg.herokuapp.com/?color=ffff&size=35&center=true&vCenter=true&width=1000&lines=Bem-vindo(a)!+:%29;Projeto+Front-End;Código;DOSIMAGEM;Equipe+NEXA)](https://git.io/typing-svg)
 
-Esse é um projeto de uma aplicação base usando React e Firebase construído com motivações didáticas.
-
-
-## Dependências
-
-- https://nodejs.org/en : Necessário para rodar o projeto localmente.
-- https://git-scm.com/ : Necessário para versionar as modificações no projeto.
+![GitHub language count](https://img.shields.io/github/languages/count/amandfernandes/NEXA?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/amandfernandes/NEXA?style=for-the-badge)
+![Bitbucket open issues](https://img.shields.io/bitbucket/issues/amandfernandes/NEXA?style=for-the-badge)
 
 
-## Instalação
+## 📎 Links
 
-1. Faça um fork do repositório em sua conta no gitlab, github, ou outro serviço semelhante que use o git como ferramente de versionamento; 
-2. Clone o seu novo repositório para fazer as modificações necessárias ao seu projeto em sua máquina local;
-3. Execute o comando `npm install` no diretório raiz do projeto para instalar os módulos e bibliotecas necessários para o projeto
-
-## Execução
-
-O comando de execução local do projeto de ver executado no diretório raiz e depende do sistema operacional utilizado para o desenvolvimento:
-
-- Para Windows: `npm run start-windows`
-- Para Linux ou MacOS: `npm run start-linux`
-
-## Versão de Produção
-
-Utilize o comando `npm run build` para construir uma versão pronta para produção. Os arquivos dessa versão estarão disponíveis na pasta *build*.
+- [Documantação](https://github.com/amandfernandes/NEXA.git) : Documentação do Projeto.
+- [Trello](https://trello.com/invite/b/vbJBU6bO/ATTI3597f1feb2e6a7a6e3386680b7f977d84E4DF30E/nexa) : Organização da equipe.

@@ -1,28 +1,43 @@
-import { onAuthStateChanged } from "firebase/auth"
-import Base from "./Base"
-import { auth } from "../config/Firebase";
-import { useEffect } from "react";
+/* Essa Página é o dashboard principal=
+Deve conter=
+  As ultimas solicitações (5);
+  As ultimas interações do histórico.
+*/
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import data from '../data/Solicitacoes.json';
+import FiltroForms from '../components/FiltroForms/FiltroForms';
+import CardSolicitacao from '../components/CardSolicitacao/CardSolicitacao';
+import Base from './Base'
+
+const ClientCards = styled.div`
+  display: flex;
+  flex-direction: row; /* Faz com que os cartões se alinhem horizontalmente */
+  justify-content: space-between; /* Espaça os cartões uniformemente */
+  overflow-x: auto; /* Permite rolagem horizontal se os cartões excederem a largura do container */
+`;
 
 const Home = () => {
-
-  /* useEffect(()=> {
-    onAuthStateChanged(auth, (user)=> {
-      if (user) {
-        window.sessionStorage.setItem("accessToken", user.accessToken);
-      } else {
-        window.sessionStorage.removeItem("accessToken");
-      }
-    })
-  },[]) */
-  
-
+  const [filteredData, setFilteredData] = useState(data.slice(-4));
+  /* Nessa Página deve ficar as 5 ultimas solicitações e o breve registro dos historicos */
   return (
     <Base>
-      <h1>
-     Aplicação React Base
-      </h1>
+      <FiltroForms requests={data} setFilteredRequests={setFilteredData} />
+      <ClientCards>
+        {filteredData.map((request) => (
+          <CardSolicitacao
+            key={request.id}
+            id={request.id}
+            client={request.client}
+            date={request.date}
+            status={request.status}
+            forms={request.forms}
+          />
+        ))}
+      </ClientCards>
+      <button>More</button>
     </Base>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
