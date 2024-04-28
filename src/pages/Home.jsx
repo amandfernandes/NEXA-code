@@ -1,49 +1,43 @@
-import { onAuthStateChanged } from "firebase/auth"
-import Base from "./Base"
-import { auth } from "../config/Firebase";
-import { useEffect } from "react";
-import React from 'react';
-import Servicos from "../components/Servicos/Servicos";
-import FiltroComponent from "../components/Filtro/Filtro";
+/* Essa Página é o dashboard principal=
+Deve conter=
+  As ultimas solicitações (5);
+  As ultimas interações do histórico.
+*/
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import data from '../data/Solicitacoes.json';
+import FiltroForms from '../components/FiltroForms/FiltroForms';
+import CardSolicitacao from '../components/CardSolicitacao/CardSolicitacao';
+import Base from './Base'
+
+const ClientCards = styled.div`
+  display: flex;
+  flex-direction: row; /* Faz com que os cartões se alinhem horizontalmente */
+  justify-content: space-between; /* Espaça os cartões uniformemente */
+  overflow-x: auto; /* Permite rolagem horizontal se os cartões excederem a largura do container */
+`;
 
 const Home = () => {
-
-  /* useEffect(()=> {
-    onAuthStateChanged(auth, (user)=> {
-      if (user) {
-        window.sessionStorage.setItem("accessToken", user.accessToken);
-      } else {
-        window.sessionStorage.removeItem("accessToken");
-      }
-    })
-  },[]) */
-    const requests = [
-      { forms:'Dosimetria Clínica', id: '0001', title: 'Clinica', status: 'Pending', date: '12/04/2024' },
-      { forms:'Dosimetria Pré-Clínica', id: '0002', title: 'Clinica', status: 'Pending', date: '12/04/2024' },
-      { forms:'Modelagem Computacional', id: '0003', title: 'Clinica', status: 'Concluded', date: '12/04/2024' },
-      { forms:'Segmentação e Quantificação', id: '0004', title: 'Clinica', status: 'Pending', date: '12/4/2024' },
-      { forms:'Radiosinoviortese', id: '0005', title: 'Clinica', status: 'Pending', date: '12/04/2024' },
-      { forms:'Dosimetria Clínica', id: '0006', title: 'Clinica', status: 'Concluded', date: '12/04/2024' },
-      { forms:'Dosimetria Pré-Clínica', id: '0007', title: 'Clinica', status: 'Pending', date: '12/04/2024' },
-      { forms:'Modelagem Computacional', id: '0008', title: 'Clinica', status: 'Pending', date: '12/04/2024' },
-      { forms:'Segmentação e Quantificação', id: '0009', title: 'Clinica', status: 'Pending', date: '12/4/2024' },
-      { forms:'Radiosinoviortese', id: '0010', title: 'Clinica', status: 'Concluded', date: '12/04/2024' },
-      { forms:'Dosimetria Clínica', id: '0011', title: 'Clinica', status: 'Concluded', date: '12/04/2024' },
-      { forms:'Dosimetria Pré-Clínica', id: '0012', title: 'Clinica', status: 'Pending', date: '12/04/2024' },
-      { forms:'Modelagem Computacional', id: '0013', title: 'Clinica', status: 'Concluded', date: '12/04/2024' },
-      { forms:'Segmentação e Quantificação', id: '0014', title: 'Clinica', status: 'Concluded', date: '12/4/2024' },
-      { forms:'Radiosinoviortese', id: '0015', title: 'Clinica', status: 'Pending', date: '12/04/2024' },
-        ]
+  const [filteredData, setFilteredData] = useState(data.slice(-4));
 
   return (
-      <Base>
-        <h2>Solicitações</h2>
-        
-        <div>
-          <Servicos requests={requests} />
-        </div>
-      </Base>
-  )
-}
+    <Base>
+      <FiltroForms requests={data} setFilteredRequests={setFilteredData} />
+      <ClientCards>
+        {filteredData.map((request) => (
+          <CardSolicitacao
+            key={request.id}
+            id={request.id}
+            client={request.client}
+            date={request.date}
+            status={request.status}
+            forms={request.forms}
+          />
+        ))}
+      </ClientCards>
+      <button>More</button>
+    </Base>
+  );
+};
 
-export default Home
+export default Home;
