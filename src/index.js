@@ -11,6 +11,7 @@ import { auth } from "./config/Firebase";
 import { onAuthStateChanged } from "firebase/auth";
 
 import Servicos from "./pages/Servicos";
+import Solicitacao from "./pages/Solicitacao";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -31,6 +32,7 @@ root.render(
         <Route path="/servicos" element={<Servicos/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/logout" element={<Logout/>} />
+        <Route path="/solicitacao/:id" element={<Solicitacao/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

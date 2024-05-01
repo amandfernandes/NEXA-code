@@ -2,6 +2,7 @@
 import React from 'react';
 import { Table, Th, Td, Tr, Button, TableContainer } from './Style';
 import FiltroForms from '../FiltroForms/FiltroForms'
+import { Link } from "react-router-dom";
 
 const TableSolicitacao = ({ requests }) => {
   const [filteredRequests, setFilteredRequests] = React.useState(requests);
@@ -30,7 +31,7 @@ const TableSolicitacao = ({ requests }) => {
                   <Td>{request.date}</Td>
                   <Td>{request.status}</Td>
                   <Td>{request.forms}</Td>
-                  <Td><Button>Acessar</Button></Td>
+                  <Td><Link to={"/solicitacao/"+request.id}><Button>Acessar</Button></Link></Td>
                 </Tr>
               ))
             ) : (
