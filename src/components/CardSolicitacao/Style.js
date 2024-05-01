@@ -12,7 +12,8 @@ export const Container = styled.div`
 `;
 
 export const ContainerCard = styled.div`
-    width: 300px;
+    width: 205px;
+    height: 80px;
     border-radius: 10px;
     background-color: #F9F9F9; 
     padding: 20px;
@@ -34,7 +35,7 @@ export const Span = styled.span`
    &#id {
        font-weight: bold;
        color: #333; 
-       font-size :18px ;
+       font-size :15px ;
        grid-area: a;
    }
 
@@ -53,13 +54,13 @@ export const Span = styled.span`
 
    &#forms {
      color:#666; 
-     font-size :14px ;
+     font-size :12px ;
      grid-area: c;
    }
 
    &#date {
      color:#666; 
-     font-size :14px ;
+     font-size :12px ;
      text-align:right ;
      align-self: center;
      grid-area: e;
@@ -67,16 +68,16 @@ export const Span = styled.span`
 `;
 
 export const Button = styled.button`
-    border-radius :20px ;  
+    border-radius :15px ;  
     background-color: #003154; 
     color: white;
-    padding: 10px 20px;
+    padding: 5px 10px;
     text-align: center;
     display: inline-block;
     font-size: 12px;
     margin: 4px 2px;
     cursor: pointer;
     grid-area: d;
-    width: 100px;
-    height: 40px;
+    width: 75px;
+    height: 25px;
 `;
