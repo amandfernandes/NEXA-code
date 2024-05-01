@@ -5,63 +5,63 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: #F5F5F5; /* Cor de fundo do container */
-  width: 100%; /* Largura do container */
-  height: 100%; /* Altura do container */
-  padding: 20px; /* Espaçamento interno do container */
+  background-color: #F5F5F5;
+  width: 60%; /* Reduced width */
+  height: 60%; /* Reduced height */
+  padding: 12px; /* Reduced padding */
 `;
 
 export const ContainerCard = styled.div`
-    width: 300px;
-    border-radius: 10px;
-    background-color: #F9F9F9; 
-    padding: 20px;
-    margin: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  width: 180px; /* Reduced width */
+  border-radius: 6px; /* Reduced border radius */
+  background-color: #F9F9F9;
+  padding: 12px; /* Reduced padding */
+  margin: 6px; /* Reduced margin */
+  box-shadow: 0 2.4px 3.6px rgba(0, 0, 0, 0.1); /* Reduced box shadow */
 `;
 
 export const DataDiv = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 30px);
-    grid-template-areas: 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 18px); /* Reduced row height */
+  grid-template-areas:
     "a a b"
     "c c c"
     "d d e";
 `;
 
 export const Span = styled.span`
-   &#id {
-       font-weight: bold;
-       color: #333; 
-       font-size :12px ;
-       grid-area: a;
-   }
+  &#id {
+    font-weight: bold;
+    color: #333;
+    font-size: 7.2px; /* Reduced font size */
+    grid-area: a;
+  }
 
-   &#status {
+  &#status {
     display: inline-block;
-    font-size: 12px;
+    font-size: 7.2px; /* Reduced font size */
     color: #219177;
     text-align: center;
-    width: 100px;
-    height: 15px;
-    border: 1px solid #219177;
-    border-radius: 20px;
+    width: 60px; /* Reduced width */
+    height: 9px; /* Reduced height */
+    border: 0.6px solid #219177; /* Reduced border thickness */
+    border-radius: 12px; /* Reduced border radius */
     align-self: flex-start;
     grid-area: b;
-   }
+  }
 
-   &#action {
-     color:#666; 
-     font-size :12px ;
-     grid-area: c;
-   }
+  &#action {
+    color: #666;
+    font-size: 7.2px; /* Reduced font size */
+    grid-area: c;
+  }
 
-   &#time {
-     color:#666; 
-     font-size :12px ;
-     text-align:right ;
-     align-self: center;
-     grid-area: e;
-   }
+  &#time {
+    color: #666;
+    font-size: 7.2px; /* Reduced font size */
+    text-align: right;
+    align-self: center;
+    grid-area: e;
+  }
 `;

@@ -7,35 +7,34 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import data from '../data/Solicitacoes.json';
 import FiltroForms from '../components/FiltroForms/FiltroForms';
-import CardSolicitacao from '../components/CardSolicitacao/CardSolicitacao';
-import Base from './Base'
-
-const ClientCards = styled.div`
-  display: flex;
-  flex-direction: row; /* Faz com que os cartões se alinhem horizontalmente */
-  justify-content: space-between; /* Espaça os cartões uniformemente */
-  overflow-x: auto; /* Permite rolagem horizontal se os cartões excederem a largura do container */
-`;
+import DashboardSection from '../components/DashboardSection/DashboardSection';
+import Base from './Base';
 
 const Home = () => {
-  const [filteredData, setFilteredData] = useState(data.slice(-4));
-  /* Nessa Página deve ficar as 5 ultimas solicitações e o breve registro dos historicos */
+  const [originalData, setOriginalData] = useState(data);
+  const [filteredData, setFilteredData] = useState(originalData.slice(-4));
+  const [selectedForm, setSelectedForm] = useState('');
+
+  const handleFilterChange = (newData) => {
+    // Filtrar os últimos itens do novo conjunto de dados
+    setFilteredData(newData.slice(-4));
+  };
+
+  const handleFilterRemove = () => {
+    setSelectedForm('');
+    // Mostrar novamente os últimos 4 itens do conjunto de dados original
+    setFilteredData(originalData.slice(-4));
+  };
+
   return (
     <Base>
-      <FiltroForms requests={data} setFilteredRequests={setFilteredData} />
-      <ClientCards>
-        {filteredData.map((request) => (
-          <CardSolicitacao
-            key={request.id}
-            id={request.id}
-            client={request.client}
-            date={request.date}
-            status={request.status}
-            forms={request.forms}
-          />
-        ))}
-      </ClientCards>
-      <button>More</button>
+      <FiltroForms
+        requests={originalData}
+        setFilteredRequests={handleFilterChange}
+        onFilterRemove={handleFilterRemove}
+        selectedForm={selectedForm}
+      />
+      <DashboardSection filteredData={filteredData} />
     </Base>
   );
 };
