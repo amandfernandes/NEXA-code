@@ -13,8 +13,10 @@ const TableSolicitacao = ({ requests }) => {
               <Th>ID</Th>
               <Th>Cliente</Th>
               <Th>Data</Th>
-              <Th>Status</Th>
               <Th>Formulário</Th>
+              <Th>Status</Th>
+              <Th>Download</Th>
+              <Th>Hitórico</Th>
               <Th>Acessar</Th>
             </Tr>
           </thead>
@@ -25,8 +27,10 @@ const TableSolicitacao = ({ requests }) => {
                   <Td>{request.id}</Td>
                   <Td>{request.client}</Td>
                   <Td>{request.date}</Td>
-                  <Td>{request.status}</Td>
                   <Td>{request.forms}</Td>
+                  <Td>{request.status}</Td>
+                  <Td></Td>
+                  <Td></Td>
                   <Td><Link to={"/solicitacao/"+request.id}><Button>Acessar</Button></Link></Td>
                 </Tr>
               ))

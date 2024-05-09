@@ -1,32 +1,43 @@
 /* Esse componente vai tratar da solicitação detalhada */
 import React, { useState } from "react";
-import { Cliente, Data, Historico, Status, Dosimetria, Dados, Botao, bt_download, bt_relatorio, Solicitacao, Button, Botoes  } from "./Style";
+import { Cliente, Data, Historico, Status, Forms, Dados, Botao, bt_download, bt_relatorio, Solicitacao, Button, Botoes } from "./Style";
 import FileUploader from "../Relatorio/Relatorio";
 
-const SolicitacaoEspecifica = () => {
-  const [uploadError, setUploadError] = useState(null);
+const ErrorMessage = ({ error }) => {
+  return <p style={{ color: "red" }}>{error}</p>;
+};
 
-  const handleFileUploader = async (file) => {
+// Use destructuring to extract props
+const SolicitacaoEspecifica = ({ id, client, date, status, forms }) => {
+  const [uploadError, setUploadError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleFileUploader = async (uploadedFile) => {
+    setIsLoading(true);
     try {
-      await FileUploader(file);
+      await FileUploader(uploadedFile);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error uploading relatorio:", error);
       setUploadError(error.message);
+      setIsLoading(false);
     }
   };
+
   return (
     <Solicitacao>
-      <Cliente>Cliente</Cliente>
-      <Data>28/04/2024</Data>
+      <Cliente>{id} {client}</Cliente>
+      <Data>{date}</Data>
       <Historico>Histórico</Historico>
-      <Status>Status</Status>
-      <Dosimetria>Dosimetria Clínica</Dosimetria>
+      <Status>{status}</Status>
+      <Forms>{forms}</Forms>
       <Dados>Dados do Cliente</Dados>
       <Botoes>
         <FileUploader onUpload={handleFileUploader} />
         <Button>Download</Button>
       </Botoes>
-      {uploadError && <p style={{ color: "red" }}>{uploadError}</p>}
+      {uploadError && <ErrorMessage error={uploadError} />}
+      {isLoading && <p>Uploading...</p>}
     </Solicitacao>
   );
 };

@@ -1,5 +1,10 @@
 import React from 'react';
-import styles from './Style';
+import {
+  FileUploader as FileUploaderStyled,
+  InputFile,
+  UploadButton,
+  ErrorText,
+} from './Style';
 
 const FileUploader = ({ onUpload }) => {
   const [file, setFile] = React.useState(null);
@@ -26,18 +31,16 @@ const FileUploader = ({ onUpload }) => {
   };
 
   return (
-    <div className={styles.fileUploader}>
-      <input type="file" onChange={handleFileChange} style={styles.inputFile} />
+    <FileUploaderStyled>
+      <InputFile type="file" onChange={handleFileChange} />
       {file && (
         <div>
           <p>Selected file: {file.name}</p>
-          <button onClick={handleUpload} style={styles.uploadButton}>
-            Upload file
-          </button>
+          <UploadButton onClick={handleUpload}>Upload file</UploadButton>
         </div>
       )}
-      {uploadError && <p style={styles.errorText}>{uploadError}</p>}
-    </div>
+      {uploadError && <ErrorText>{uploadError}</ErrorText>}
+    </FileUploaderStyled>
   );
 };
 

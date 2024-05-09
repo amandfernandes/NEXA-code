@@ -1,5 +1,65 @@
 import styled from 'styled-components';
 
+export const Solicitacao = styled.div`
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  padding: 20px;
+`;
+
+export const Cliente = styled.h1`
+  color: #000;
+  width: 407px;
+  font-size: 32px;
+`;
+
+export const Data = styled.p`
+  color: #000;
+`;
+
+export const Historico = styled.button`
+  background-color: transparent;
+  border: solid 2px #000;
+`;
+
+export const Status = styled.p`
+    font-size: 12px;
+    color: #219177;
+    text-align: center;
+    width: 110px;
+    height: 20px;
+    border: 1px solid #219177;
+    border-radius: 25px;
+    align-self: flex-start;
+    font-size: 15px;
+`;
+
+export const Forms = styled.form`
+    color: #000;
+    font-size: 24px;
+    padding-top:50px;
+`;
+
+export const Dados = styled.section`
+    color: #000;
+    font-size: 24px;
+    padding-top:50px;
+`;
+
+export const Botao = styled.button`
+ background-color: blue; // Supondo que o azul seja a cor principal do botão
+ color: white;
+ border-radius: 5px; 
+ padding:10px; 
+ margin-top :10px; 
+ border:none; 
+ cursor:pointer;
+
+ &:hover {
+   background-color :darkblue; // Um tom mais escuro para o efeito de hover
+ }
+`;
+
+
 export const Button = styled.button`
   background-color: #003154; 
   border: none;
@@ -14,14 +74,14 @@ export const Button = styled.button`
   border-radius: 12px; /* Ajuste este valor conforme necessário */
 `;
 
-export const Cliente = styled.span`
+export const Client = styled.span`
 width: 407px;
 color: rgba(0,0,0,1);
 font-family: Lexend Exa;
 font-weight: Regular;
 font-size: 32px;`
 ;
-export const Data = styled.span`
+export const Date = styled.span`
 width: 337px;
     color: rgba(0,0,0,1);
     padding-left: 100px;
@@ -31,7 +91,7 @@ width: 337px;
     font-size: 20px;
     `;
 
-export const Historico = styled.span`
+export const History = styled.span`
 width: 480px;
     color: rgba(0,0,0,1);
     padding-left: 100px;
@@ -43,7 +103,7 @@ width: 480px;
     text-align: center;
     `;
 
-export const Status = styled.div`
+export const Status1 = styled.div`
     color: rgba(33,145,119,1);
     top: 20px;
     font-family: Lexend Exa;
@@ -51,7 +111,7 @@ export const Status = styled.div`
     font-size: 20px;
     `;
     
-export const Dosimetria = styled.div`
+export const Form = styled.div`
     color: rgba(0,0,0,1);
     font-family: Lexend Exa;
     font-weight: Regular;
@@ -59,7 +119,7 @@ export const Dosimetria = styled.div`
     padding-top:50px;
     `; 
 
-export const Dados = styled.div`
+export const Datas = styled.div`
     color: rgba(0,0,0,1);
     font-family: Lexend Exa;
     font-weight: Regular;
@@ -93,7 +153,7 @@ width: 239px;
     text-align: left;
     `;
 
-    export const Solicitacao = styled.div`
+    export const Solicitacoes = styled.div`
     width: 407px;
     position: relative;
     top: 30px;
