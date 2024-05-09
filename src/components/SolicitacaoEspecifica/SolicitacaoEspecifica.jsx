@@ -1,20 +1,21 @@
 /* Esse componente vai tratar da solicitação detalhada */
 import React from "react";
-import { Table, Th, Td, Tr, Button, TableContainer } from "./Style";
+import { Cliente, Data, Historico, Status, Dosimetria, Dados, Botao, bt_download, bt_relatorio, Solicitacao, Button, Botoes  } from "./Style";
 
 const SolicitacaoEspecifica = () => {
   return (
-    <div>
-          <p>
-            <label>Cliente:</label> Cliente
-          </p>
-          <p>
-            <label>Data:</label> Data
-          </p>
-          <p>
-            <label>Status:</label> Status
-          </p>
-    </div>
+    <Solicitacao>
+      <Cliente>Cliente</Cliente>
+      <Data>28/04/2024</Data>
+      <Historico>Histórico</Historico>
+      <Status>Status</Status>
+      <Dosimetria>Dosimetria Clínica</Dosimetria>
+      <Dados>Dados do Cliente</Dados>
+      <Botoes>
+        <Button>Arquivo Download</Button>
+        <Button>Enviar Relatorio</Button>
+      </Botoes>
+    </Solicitacao>
   );
 };
 
