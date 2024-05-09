@@ -1,8 +1,19 @@
 /* Esse componente vai tratar da solicitação detalhada */
-import React from "react";
+import React, { useState } from "react";
 import { Cliente, Data, Historico, Status, Dosimetria, Dados, Botao, bt_download, bt_relatorio, Solicitacao, Button, Botoes  } from "./Style";
+import FileUploader from "../Relatorio/Relatorio";
 
 const SolicitacaoEspecifica = () => {
+  const [uploadError, setUploadError] = useState(null);
+
+  const handleFileUploader = async (file) => {
+    try {
+      await FileUploader(file);
+    } catch (error) {
+      console.error("Error uploading relatorio:", error);
+      setUploadError(error.message);
+    }
+  };
   return (
     <Solicitacao>
       <Cliente>Cliente</Cliente>
@@ -12,9 +23,10 @@ const SolicitacaoEspecifica = () => {
       <Dosimetria>Dosimetria Clínica</Dosimetria>
       <Dados>Dados do Cliente</Dados>
       <Botoes>
-        <Button>Arquivo Download</Button>
-        <Button>Enviar Relatorio</Button>
+        <FileUploader onUpload={handleFileUploader} />
+        <Button>Download</Button>
       </Botoes>
+      {uploadError && <p style={{ color: "red" }}>{uploadError}</p>}
     </Solicitacao>
   );
 };
