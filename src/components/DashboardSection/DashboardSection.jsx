@@ -1,4 +1,5 @@
 import React from 'react';
+import { HiArrowCircleRight } from "react-icons/hi";
 import { DSection, Section, H2, Cards, CImg, Card } from './Style';
 import CardSolicitacao from '../CardSolicitacao/CardSolicitacao';
 
@@ -18,7 +19,7 @@ const DashboardSection = ({ filteredData }) => (
             />
           ))}
           <CImg>
-            <img src="https://img.icons8.com/ffffff/ios11/2x/circled-right.png" alt="25" width={75}/>
+            <HiArrowCircleRight />
           </CImg>
       </Cards>
     </Section>

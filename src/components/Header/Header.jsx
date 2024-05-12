@@ -2,6 +2,7 @@
 
 import { Link } from "react-router-dom";
 import { Top } from "./Style";
+import { HiUser } from "react-icons/hi";
 
 const Header = () => (
   <Top>
@@ -10,6 +11,7 @@ const Header = () => (
     <div id="Nave">
       <Link to="/">Home</Link>
       <Link to="/servicos">Serviços</Link>
+      <Link to=""><HiUser /></Link>
     </div>
 
     <div id="Login">
