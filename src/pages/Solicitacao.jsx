@@ -3,14 +3,8 @@ import SolicitacaoEspecifica from "../components/SolicitacaoEspecifica/Solicitac
 import { useParams } from "react-router-dom";
 import Base from "./Base";
 import data from '../data/Solicitacoes.json';
+import { DashboardSolicitacao } from "../components/DashboardSolicitacao/DashboardSolicitacao";
 
-const TitleComponent = ({ id }) => {
-  return (
-    <div className="title">
-      <h4>Solicitacao {id}</h4>
-    </div>
-  );
-};
 
 const SolicitacaoComponent = () => {
   const { id } = useParams();
@@ -22,8 +16,7 @@ const SolicitacaoComponent = () => {
 
   return (
     <Base>
-      <TitleComponent id={id} />
-      <SolicitacaoEspecifica {...solicitacao} />
+      <DashboardSolicitacao solicitacoes={[solicitacao]}/>
     </Base>
   );
 };

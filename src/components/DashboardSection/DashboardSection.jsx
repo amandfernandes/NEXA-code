@@ -19,7 +19,7 @@ const DashboardSection = ({ filteredData }) => (
             />
           ))}
           <CImg>
-            <HiArrowCircleRight />
+            <HiArrowCircleRight size={'100'} />
           </CImg>
       </Cards>
     </Section>

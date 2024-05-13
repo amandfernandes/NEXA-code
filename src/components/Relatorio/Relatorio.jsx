@@ -1,17 +1,16 @@
-import React from 'react';
-import {
-  FileUploader as FileUploaderStyled,
-  InputFile,
-  UploadButton,
-  ErrorText,
-} from './Style';
+// Relatorio.jsx
+import React, { useState } from 'react';
+import { FileUploaderContainer, InputFile, FileName, UploadButton, CancelButton } from './style';
+import { CiCirclePlus } from 'react-icons/ci';
 
-const FileUploader = ({ onUpload }) => {
-  const [file, setFile] = React.useState(null);
-  const [uploadError, setUploadError] = React.useState(null);
+const Relatorio = ({ solicitacaoId, onReportSent }) => {
+  const [file, setFile] = useState(null);
+  const [uploadError, setUploadError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
+    setUploadError(null);
   };
 
   const handleUpload = async () => {
@@ -20,28 +19,66 @@ const FileUploader = ({ onUpload }) => {
       return;
     }
 
+    setLoading(true);
     try {
-      await onUpload(file);
-      setFile(null);
-      setUploadError(null);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const fileData = {
+          id: solicitacaoId,
+          file: reader.result,
+        };
+        localStorage.setItem(`file-${solicitacaoId}`, JSON.stringify(fileData));
+        setFile(null);
+        setLoading(false);
+
+        // Dispara o evento 'reportSent' com solicitacaoId no detalhe
+        const event = new CustomEvent('reportSent', { detail: { solicitacaoId: solicitacaoId } });
+        document.dispatchEvent(event);
+
+        // Chama onReportSent após disparar o evento
+        onReportSent && onReportSent(solicitacaoId);
+      };
+
+      reader.onerror = (error) => {
+        console.error("Error uploading file:", error);
+        setUploadError(`Error uploading file: ${error.message}`);
+        setLoading(false);
+      };
+
+      reader.readAsDataURL(file);
     } catch (error) {
       console.error("Error uploading file:", error);
-      setUploadError(error.message);
+      setUploadError(`Error uploading file: ${error.message}`);
+      setLoading(false);
     }
   };
 
+  const handleCancel = () => {
+    setFile(null);
+    setUploadError(null);
+  };
+
   return (
-    <FileUploaderStyled>
-      <InputFile type="file" onChange={handleFileChange} />
+    <>
+      <FileUploaderContainer>
+        ANEXAR ARQUIVOS
+        <label htmlFor="file-upload">
+          <CiCirclePlus size={25} />
+        </label>
+        <InputFile id="file-upload" type="file" onChange={handleFileChange} />
+        {file && <FileName>{file.name}</FileName>}
+      </FileUploaderContainer>
       {file && (
         <div>
-          <p>Selected file: {file.name}</p>
-          <UploadButton onClick={handleUpload}>Upload file</UploadButton>
+          <UploadButton onClick={handleUpload} disabled={loading}>
+            {loading ? "Uploading..." : "ENVIAR"}
+          </UploadButton>
+          <CancelButton onClick={handleCancel}>cancelar</CancelButton>
         </div>
       )}
-      {uploadError && <ErrorText>{uploadError}</ErrorText>}
-    </FileUploaderStyled>
+      {uploadError && <div>{uploadError}</div>}
+    </>
   );
 };
 
-export default FileUploader;
+export default Relatorio;

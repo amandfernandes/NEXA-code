@@ -1,31 +1,35 @@
-/* Essa Página deve apresentar todas as solicitações feitas */
 import React, { useState } from 'react';
 import TableSolicitacao from '../components/TableSolicitacao/TableSolicitacao';
 import requestsData from '../data/Solicitacoes.json';
 import FiltroForms from '../components/FiltroForms/FiltroForms';
 import Base from './Base';
+import Search from '../components/Search/Search'; 
 
-function Servicos() { 
-  const [originalData, setOriginalData] = useState(requestsData);
-  const length = originalData.length; // Initialize length with the correct value
-  const [filteredData, setFilteredData] = useState(originalData.slice(0, length));
+function Servicos() {
+  const [originalData] = useState(requestsData);
+  const [filteredData, setFilteredData] = useState(originalData); 
 
   const handleFilterChange = (newData) => {
     setFilteredData(newData);
   };
 
   const handleFilterRemove = () => {
-    setFilteredData(originalData.slice(0, length));
+    setFilteredData(originalData); 
+  };
+
+  const handleSearch = (results) => {
+    setFilteredData(results);
   };
 
   return (
     <Base>
       <FiltroForms
         requests={originalData}
-        setFilteredRequests={handleFilterChange} // Update this line
+        setFilteredRequests={handleFilterChange}
         onFilterRemove={handleFilterRemove}
       />
-      <TableSolicitacao requests={filteredData} />
+      <Search requests={originalData} onSearch={handleSearch} /> 
+      <TableSolicitacao requests={filteredData} /> 
     </Base>
   );
 }

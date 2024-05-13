@@ -1,38 +1,51 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
+export const FileUploaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  padding: 8px 12px;
+  margin-bottom: 10px;
 
-export const borderRadius = '5px';
-export const boxShadow = '0 0 10px rgba(0, 0, 0, 0.1)';
-
-export const FileUploader = styled.div`
-  max-width: 300px;
-  margin: 40px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: ${borderRadius};
-  box-shadow: ${boxShadow};
-`;
-
-export const InputFile = styled.input`
-  display: block;
-  margin: 10px 0;
-`;
-
-export const UploadButton = styled.button`
-  background-color: #4CAF50;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: ${borderRadius};
-  cursor: pointer;
-
-  &:hover {
-    background-color: #3e8e41;
+  label {
+    cursor: pointer;
+    margin-right: 10px;
   }
 `;
 
-export const ErrorText = styled.span`
-  color: red;
+export const InputFile = styled.input`
+  display: none;
+`;
+
+export const FileName = styled.span`
   font-size: 14px;
-  margin-bottom: 10px;
+  color: #333;
+`;
+
+export const UploadButton = styled.button`
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 10px;
+
+  &:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+`;
+
+export const CancelButton = styled.button`
+  background-color: transparent;
+  color: #6c757d;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
 `;

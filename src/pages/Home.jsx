@@ -1,6 +1,6 @@
 /* Essa Página é o dashboard principal=
 Deve conter=
-  As ultimas solicitações (5);
+  As ultimas solicitações (4);
   As ultimas interações do histórico.
 */
 import React, { useState } from 'react';
@@ -9,6 +9,7 @@ import data from '../data/Solicitacoes.json';
 import FiltroForms from '../components/FiltroForms/FiltroForms';
 import DashboardSection from '../components/DashboardSection/DashboardSection';
 import Base from './Base';
+import HistoricoCard from '../components/HistóricoCard/HistóricoCard';
 
 const Home = () => {
   const [originalData, setOriginalData] = useState(data);
@@ -35,6 +36,7 @@ const Home = () => {
         selectedForm={selectedForm}
       />
       <DashboardSection filteredData={filteredData} />
+      <HistoricoCard/>
     </Base>
   );
 };

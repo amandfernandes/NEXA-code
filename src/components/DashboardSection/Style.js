@@ -13,6 +13,7 @@ const Section = styled.div`
   padding: 1px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  justify-content: space-between;
 `;
 
 const H2 = styled.h2`
@@ -25,11 +26,12 @@ const H2 = styled.h2`
 
 const Cards = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(18%, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(14.5em, 1fr));
+  gap: 1em;
   padding: 10px;
   border-radius: 4px;
   margin: 10px;
+  justify-content: space-between;
 
 `;
 
@@ -37,6 +39,7 @@ const Cards = styled.div`
 const CImg = styled.div`
   align-self: right;
   padding: 10%;
+  color: #fff;
   `;
 
 const Card = styled.div`
