@@ -1,0 +1,38 @@
+import React from "react";
+import { saveAs } from 'file-saver';
+
+const DownloadButton = (props) => {
+   
+    const { links, prefix } = props;  // Lista de imagens (URLs)
+    
+    const handleDownload = async (link, index) => {
+        const response = await fetch(link);
+        const blob = await response.blob();
+        saveAs(blob, `${prefix}_${index}.jpg`);
+    }
+  
+    return (
+        <div>
+            {links.map((link, index) => (
+                <button key={index} onClick={() => handleDownload(link, index)}>
+                    {`Download ${prefix}_${index}.jpg`}
+                </button>
+            ))}
+        </div>
+    );
+}
+
+export default DownloadButton;
+
+Aqui estão as alterações:
+
+Removi a importação da biblioteca JSZip, pois não será mais usada.
+Removi a importação da biblioteca jszip.
+A função loadImage foi removida, pois não é mais necessária.
+Dentro da função handleDownload, agora fazemos o download de cada imagem individualmente. Após obter o blob da imagem, utilizamos a função saveAs diretamente para iniciar o download da imagem com o nome adequado.
+No retorno do componente, renderizamos uma série de botões, um para cada imagem na lista links. Cada botão chama a função handleDownload correspondente ao ser clicado, passando a URL da imagem e o índice como argumentos. O nome do botão indica o nome do arquivo que será baixado.
+Com essas alterações, o componente permitirá que os usuários baixem as imagens individualmente, sem precisar de um arquivo zip.
+
+
+
+
