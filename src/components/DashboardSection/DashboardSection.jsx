@@ -2,22 +2,23 @@ import React from 'react';
 import { HiArrowCircleRight } from "react-icons/hi";
 import { DSection, Section, H2, Cards, CImg, Card } from './Style';
 import CardSolicitacao from '../CardSolicitacao/CardSolicitacao';
+import HistoricoCard from '../HistoricoCard/HistoricoCard';
 
-const DashboardSection = ({ filteredData }) => (
+const DashboardSection = ({ filteredSolicitacao, filteredHistorico }) => (
   <DSection>
     <Section>
       <H2>ÚLTIMAS SOLICITAÇÕES</H2>
       <Cards>
-          {filteredData.map((item) => (
-            <CardSolicitacao
-              key={item.id}
-              id={item.id}
-              client={item.client}
-              date={item.date}
-              status={item.status}
-              forms={item.forms}
-            />
-          ))}
+        {filteredSolicitacao.map((item) => (
+          <CardSolicitacao
+            key={item.id}
+            id={item.id}
+            client={item.client}
+            date={item.date}
+            status={item.status}
+            forms={item.forms}
+          />
+        ))}
           <CImg>
             <HiArrowCircleRight size={'100'} />
           </CImg>
@@ -25,13 +26,18 @@ const DashboardSection = ({ filteredData }) => (
     </Section>
 
     <Section>
-      <H2>ÚLTIMAS ATUALIZAÇÕES</H2>
+      <H2>HISTÓRICO</H2>
       <Cards>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>       
+        {filteredHistorico.map((itens) => (
+          <HistoricoCard
+            key={itens.time}
+            id={itens.id}
+            action={itens.action}
+            status={itens.status}
+            time={itens.time}
+            forms={itens.forms}
+          />
+        ))}
       </Cards>
     </Section>
   </DSection>

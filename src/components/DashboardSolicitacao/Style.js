@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Section = styled.div`
   display: flex; /* Enables flexbox layout */
   flex-direction: row; /* Columns side-by-side */
-  grid-template-columns: repeat(auto-fill, minmax(50em, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(100rem, 1fr));
   gap: 20px;
   padding: 20px;
 `;

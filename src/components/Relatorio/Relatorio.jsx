@@ -30,13 +30,6 @@ const Relatorio = ({ solicitacaoId, onReportSent }) => {
         localStorage.setItem(`file-${solicitacaoId}`, JSON.stringify(fileData));
         setFile(null);
         setLoading(false);
-
-        // Dispara o evento 'reportSent' com solicitacaoId no detalhe
-        const event = new CustomEvent('reportSent', { detail: { solicitacaoId: solicitacaoId } });
-        document.dispatchEvent(event);
-
-        // Chama onReportSent após disparar o evento
-        onReportSent && onReportSent(solicitacaoId);
       };
 
       reader.onerror = (error) => {

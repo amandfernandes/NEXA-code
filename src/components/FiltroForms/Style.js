@@ -21,13 +21,8 @@ export const Filtro = styled.div`
     }
 
     &:hover {
-      background-color: ${props => props.isActive ? '#ffffff' : '#003154'}; // Cor de fundo é #003154 quando o filtro está ativo, e branca quando não está
-      color: ${props => props.isActive ? '#003154' : '#ffffff'}; // Cor do texto é branca quando o filtro está ativo, e #003154 quando não está
-    }
-
-    &:active, &:focus {
-      background-color: ${props => props.isActive ? '#ffffff' : '#003154'}; // Cor de fundo é #003154 quando o filtro está ativo, e branca quando não está
-      color: ${props => props.isActive ? '#003154' : '#ffffff'}; // Cor do texto é branca quando o filtro está ativo, e #003154 quando não está
+      background-color: #003154; // Cor de fundo é #003154 quando o filtro está ativo, e branca quando não está
+      color: #ffffff; // Cor do texto é branca quando o filtro está ativo, e #003154 quando não está
     }
   }
 `;

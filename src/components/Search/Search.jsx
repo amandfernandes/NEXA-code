@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SearchForm } from './Style';
 import { IoIosSearch } from "react-icons/io";
 
 const Search = ({ requests, onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  useEffect(() => {
     const results = requests.filter((request) => {
       const searchMatch = request.client.toLowerCase().includes(searchTerm.toLowerCase()) ||
         request.id.toString() === searchTerm ||
@@ -15,10 +14,10 @@ const Search = ({ requests, onSearch }) => {
       return searchMatch;
     });
     onSearch(results);
-  };
+  }, [searchTerm, requests, onSearch]);
 
   return (
-    <SearchForm onSubmit={handleSubmit}>
+    <SearchForm onSubmit={(e) => e.preventDefault()}>
       <input
         type="text"
         id="search"
@@ -32,6 +31,5 @@ const Search = ({ requests, onSearch }) => {
     </SearchForm>
   );
 }
-
 
 export default Search;
