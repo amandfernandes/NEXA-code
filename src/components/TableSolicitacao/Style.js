@@ -7,19 +7,20 @@ export const TableContainer = styled.div`
 
 export const Table = styled.table`
   width: 100%;
-  max-width: 800px; /* Ajuste este valor conforme necessário */
+  max-width: 800rem; /* Ajuste este valor conforme necessário */
   border-collapse: collapse;
   margin-top: 20px;
 `;
 
 export const Th = styled.th`
   background-color: #f0f0f0;
-  color: #000;
+  color: #001354;
   padding: 10px;
 `;
 
 export const Td = styled.td`
   padding: 10px;
+  text-align: center;
 `;
 
 export const Tr = styled.tr`
@@ -31,17 +32,17 @@ export const Tr = styled.tr`
   }
 `;
 
-export const Button = styled.button`
-  background-color: #003154; 
+export const Button = styled.button` 
+  background-color: transparent;
   border: none;
-  color: white;
-  padding: 15px 32px;
+  color:#001354;
+  padding: 10px 16px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 12px;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: 12px; /* Ajuste este valor conforme necessário */
+  border-radius: 20px; 
 `;
 

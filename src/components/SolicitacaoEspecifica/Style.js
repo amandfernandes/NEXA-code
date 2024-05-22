@@ -1,69 +1,65 @@
 import styled from 'styled-components';
 
-export const Solicitacao = styled.div`
-  background-color: #f4f4f4;
-  border-radius: 8px;
-  padding: 20px;
+export const Container = styled.div`
+  background-color: #fff;
+  padding: 10px;
 `;
 
-export const Cliente = styled.h1`
-  color: #000;
-  width: 407px;
-  font-size: 32px;
+export const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 `;
 
-export const Data = styled.p`
-  color: #000;
+export const Cliente = styled.div`
+  font-size: 24px;
+  font-weight: bold;
 `;
 
-export const Historico = styled.button`
-  background-color: transparent;
-  border: solid 2px #000;
+export const Data = styled.div`
+  font-size: 16px;
 `;
 
-export const Status = styled.p`
-    font-size: 12px;
-    color: #219177;
-    text-align: center;
-    width: 110px;
-    height: 20px;
-    border: 1px solid #219177;
-    border-radius: 25px;
-    align-self: flex-start;
-    font-size: 15px;
+export const Status = styled.div`
+  display: inline-block;
+  font-size: 12px;
+  color: #219177;
+  text-align: center;
+  width: 100px;
+  height: 15px;
+  border: 1px solid #219177;
+  border-radius: 20px;
 `;
 
-export const Forms = styled.form`
-    color: #000;
-    font-size: 24px;
-    padding-top:50px;
+export const Forms = styled.div`
+  font-size: 16px;
+  padding: 10px;
 `;
 
-export const Dados = styled.section`
-    color: #000;
-    font-size: 24px;
-    padding-top:50px;
+export const Dados = styled.div`
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding: 10px;
 `;
 
-export const Botao = styled.button`
- background-color: blue; // Supondo que o azul seja a cor principal do botão
- color: white;
- border-radius: 5px; 
- padding:10px; 
- margin-top :10px; 
- border:none; 
- cursor:pointer;
-
- &:hover {
-   background-color :darkblue; // Um tom mais escuro para o efeito de hover
- }
+export const Botoes = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
+export const BotoesContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+`;
 
 export const Button = styled.button`
-  background-color: #003154; 
-  border: none;
-  color: white;
+  background-color: #001354; 
+  border: 1px solid #001354;
+  color: #fff;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -71,95 +67,34 @@ export const Button = styled.button`
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: 12px; /* Ajuste este valor conforme necessário */
+  border-radius: 15px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #001354; /* Darker green */
+    color:#ffff;
+  }
 `;
 
-export const Client = styled.span`
-width: 407px;
-color: rgba(0,0,0,1);
-font-family: Lexend Exa;
-font-weight: Regular;
-font-size: 32px;`
-;
-export const Date = styled.span`
-width: 337px;
-    color: rgba(0,0,0,1);
-    padding-left: 100px;
-    top: 120px;
-    font-family: Lexend Exa;
-    font-weight: Regular;
-    font-size: 20px;
-    `;
+export const Relatorio = styled.div`
+  background-color: #fff; 
+  border: 1px solid #001354;
+  color: #001354;
+`;
 
-export const History = styled.span`
-width: 480px;
-    color: rgba(0,0,0,1);
-    padding-left: 100px;
-    top: 120px;
-    font-family: Lexend Exa;
-    font-weight: Regular;
-    font-size: 20px;
-    opacity: 1;
-    text-align: center;
-    `;
+export const DownloadButton = styled(Button)`
+  background-color: #001354; /* Blue */
+  font-color:# ffff;
 
-export const Status1 = styled.div`
-    color: rgba(33,145,119,1);
-    top: 20px;
-    font-family: Lexend Exa;
-    font-weight: Regular;
-    font-size: 20px;
-    `;
-    
-export const Form = styled.div`
-    color: rgba(0,0,0,1);
-    font-family: Lexend Exa;
-    font-weight: Regular;
-    font-size: 24px;
-    padding-top:50px;
-    `; 
+`;
 
-export const Datas = styled.div`
-    color: rgba(0,0,0,1);
-    font-family: Lexend Exa;
-    font-weight: Regular;
-    font-size: 24px;
-    padding-top:50px;
-    `;
-  
-  export const bt_download = styled.div`
-  width: 287px;
-    color: rgba(255,255,255,1);
-    position: absolute;
-    top: 20px;
-    left: 23px;
-    font-family: Duru Sans;
-    font-weight: Regular;
-    font-size: 24px;
-    opacity: 1;
-    text-align: left;
-    `; 
+export const ErrorMessage = styled.p`
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+`;
 
-export const bt_relatorio = styled.div`
-width: 239px;
-    color: rgba(0,49,84,1);
-    position: absolute;
-    top: 20px;
-    left: 47px;
-    font-family: Duru Sans;
-    font-weight: Regular;
-    font-size: 24px;
-    opacity: 1;
-    text-align: left;
-    `;
-
-    export const Solicitacoes = styled.div`
-    width: 407px;
-    position: relative;
-    top: 30px;
-    left: 300px;`
-    ;
-
-    export const Botoes = styled.div`
-    padding-top:50px`
-    ;
+export const LoadingMessage = styled.p`
+  font-size: 14px;
+  margin-bottom: 10px;
+`;

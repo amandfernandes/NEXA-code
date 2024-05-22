@@ -12,6 +12,7 @@
   "author": "@EduardoMangeli",
   "license": "MIT",
   "dependencies": {
+    "file-saver": "^2.0.5",
     "firebase": "^10.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

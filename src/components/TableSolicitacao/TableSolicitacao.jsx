@@ -1,6 +1,9 @@
 /* Esse componente irá tratar da tabela de solicitações */
 import React from 'react';
+import { FaUpRightAndDownLeftFromCenter } from "react-icons/fa6";
+import { FiDownloadCloud } from "react-icons/fi";
 import { Table, Th, Td, Tr, Button, TableContainer } from './Style';
+
 
 import { Link } from "react-router-dom";
 const TableSolicitacao = ({ requests }) => {
@@ -16,7 +19,7 @@ const TableSolicitacao = ({ requests }) => {
               <Th>Formulário</Th>
               <Th>Status</Th>
               <Th>Download</Th>
-              <Th>Hitórico</Th>
+              <Th>Histórico</Th>
               <Th>Acessar</Th>
             </Tr>
           </thead>
@@ -29,9 +32,9 @@ const TableSolicitacao = ({ requests }) => {
                   <Td>{request.date}</Td>
                   <Td>{request.forms}</Td>
                   <Td>{request.status}</Td>
+                  <Td><FiDownloadCloud /></Td>
                   <Td></Td>
-                  <Td></Td>
-                  <Td><Link to={"/solicitacao/"+request.id}><Button>Acessar</Button></Link></Td>
+                  <Td><Link to={"/solicitacao/"+request.id}><Button><FaUpRightAndDownLeftFromCenter size={'15'}/></Button></Link></Td>
                 </Tr>
               ))
             ) : (
