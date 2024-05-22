@@ -41,11 +41,10 @@ export const Span = styled.span`
   &#status {
     display: inline-block;
     font-size: 10px;
-    color: #219177;
     text-align: center;
     width: 75px;
     height: 13px;
-    border: 1px solid #219177;
+    border: 1px solid;
     border-radius: 20px;
     align-self: flex-start;
     grid-area: b;

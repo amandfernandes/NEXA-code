@@ -10,6 +10,7 @@ export const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  height: 15%;
 `;
 
 export const Cliente = styled.div`
@@ -24,17 +25,18 @@ export const Data = styled.div`
 export const Status = styled.div`
   display: inline-block;
   font-size: 12px;
-  color: #219177;
   text-align: center;
   width: 100px;
   height: 15px;
-  border: 1px solid #219177;
+  border: 1px solid;
   border-radius: 20px;
+  height: 15%;
 `;
 
 export const Forms = styled.div`
   font-size: 16px;
   padding: 10px;
+  height: 35%;
 `;
 
 export const Dados = styled.div`
@@ -42,11 +44,13 @@ export const Dados = styled.div`
   font-weight: bold;
   margin-bottom: 20px;
   padding: 10px;
+  height: 35%;
 `;
 
 export const Botoes = styled.div`
   display: flex;
   justify-content: space-between;
+  height: 15%;
 `;
 
 export const BotoesContainer = styled.div`

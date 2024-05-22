@@ -36,7 +36,7 @@ const Cards = styled.div`
 `;
 
 
-const CImg = styled.div`
+const Button = styled.div`
   align-self: right;
   padding: 10%;
   color: #fff;
@@ -50,6 +50,6 @@ const Card = styled.div`
   margin: 10px;
 `;
 
-export { DSection, Section, H2, Cards, CImg, Card };
+export { DSection, Section, H2, Cards, Button, Card };
 
   

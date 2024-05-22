@@ -3,7 +3,7 @@
         "forms":"Dosimetria Clínica",
         "id": "0001",
         "client": "Clinica",
-        "status": "Pending",
+        "status": "Progress",
         "date": "12/04/2024" 
     },
 
@@ -11,7 +11,7 @@
         "forms":"Dosimetria Pré-Clínica",
         "id": "0002",
         "client": "Clinica",
-        "status": "Pending",
+        "status": "Progress",
         "date": "12/04/2024" 
     },
 
@@ -35,7 +35,7 @@
         "forms":"Radiosinoviortese",
         "id": "0005",
         "client": "Clinica",
-        "status": "Pending",
+        "status": "Progress",
         "date": "12/04/2024"
     },
 
@@ -59,7 +59,7 @@
         "forms":"Modelagem Computacional",
         "id": "0008",
         "client": "Clinica",
-        "status": "Pending",
+        "status": "Progress",
         "date": "12/04/2024"
     },
 
@@ -115,7 +115,7 @@
         "forms":"Radiosinoviortese",
         "id": "0015",
         "client": "Clinica",
-        "status": "Pending",
+        "status": "Progress",
         "date": "16/05/2024"
     }
 ]

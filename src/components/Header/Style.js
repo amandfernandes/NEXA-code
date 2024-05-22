@@ -35,12 +35,11 @@ export const Top = styled.div`
       background-color: '#003154'; // Cor de fundo é #003154 quando o filtro está ativo
       color: '#ffffff'; // Cor do texto é branca quando o filtro está ativo
       text-decoration: none;
-      margin: 0 15px;
-      border: solid 1px #dcdcdc;
-      border-radius: 10px; // Bordas mais achatadas
-      padding: 10px 20px;
+      display: flex;
+      justify-content: center; // Centralizado
+      flex-grow: 1;
+      padding: 10px 10px;
       cursor: pointer;
-
       &:active, &:focus {
         background-color: '#fffffff'; // Cor de fundo é #003154 quando o filtro está ativo
         color: '#003154'; // Cor do texto é branca quando o filtro está ativo

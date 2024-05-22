@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Section = styled.div`
-  display: flex; /* Enables flexbox layout */
+  display: flex;
+  justify-content: space-between;
   flex-direction: row; /* Columns side-by-side */
   grid-template-columns: repeat(auto-fill, minmax(100rem, 1fr));
   gap: 20px;
@@ -12,6 +13,7 @@ export const SSolicitacao = styled.div`
   padding: 1px;
   border-radius: 8px;
   justify-content: space-between;
+  width: 50%;
 `;
 
 export const H2 = styled.h2`
@@ -35,4 +37,7 @@ export const SHistorico = styled.div`
 padding: 1px;
 border-radius: 8px;
 justify-content: space-between;
+width: 25%;
+display: flex;
+flex-direction: column;
 `;

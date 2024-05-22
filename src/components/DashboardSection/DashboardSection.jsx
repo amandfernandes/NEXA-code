@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { HiArrowCircleRight } from "react-icons/hi";
-import { DSection, Section, H2, Cards, CImg, Card } from './Style';
+import { DSection, Section, H2, Cards, Button, Card } from './Style';
 import CardSolicitacao from '../CardSolicitacao/CardSolicitacao';
 import HistoricoCard from '../HistoricoCard/HistoricoCard';
 
@@ -19,14 +20,12 @@ const DashboardSection = ({ filteredSolicitacao, filteredHistorico }) => (
             forms={item.forms}
           />
         ))}
-          <CImg>
-            <HiArrowCircleRight size={'100'} />
-          </CImg>
+          <Link to={"/servicos"}><Button><HiArrowCircleRight size={'100'} /></Button></Link>
       </Cards>
     </Section>
 
     <Section>
-      <H2>HISTÓRICO</H2>
+      <H2>ÚLTIMAS ATUALIZAÇÕES</H2>
       <Cards>
         {filteredHistorico.map((itens) => (
           <HistoricoCard

@@ -1,5 +1,6 @@
+// SolicitacaoEspecifica.jsx
 import React, { useState } from "react";
-import Relatorio from "../Relatorio/Relatorio"; // Importar componente Relatorio
+import Relatorio from "../Relatorio/Relatorio"; 
 import {
   Container,
   Header,
@@ -13,26 +14,39 @@ import {
   DownloadButton,
   ErrorMessage,
   LoadingMessage,
-} from "./Style"; // Importar componentes de estilo
+} from "./Style";
+
+const getColor = (status) => {
+  switch (status) {
+    case "Concluded":
+      return "green";
+    case "Pending":
+      return "red";
+    case "Progress":
+      return "orange";
+    default:
+      return "#003154";
+  }
+};
 
 const SolicitacaoEspecifica = ({ id, client, date, status, forms }) => {
-  // Definir estados para gerenciar upload, carregamento e exibição do relatório
   const [uploadError, setUploadError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showRelatorio, setShowRelatorio] = useState(false);
 
-  // Função para lidar com o upload do relatório
   const handleRelatorio = async (uploadedFile) => {
-    setIsLoading(true); // Indicar carregamento em andamento
+    setIsLoading(true);
     try {
-      // Chamar a função de upload do relatório (implementação específica em Relatorio.js)
-      await Relatorio(uploadedFile);
-      setIsLoading(false); // Upload concluído
-      setShowRelatorio(true); // Exibir o relatório após o upload
+      // Simulate uploading the file (replace with actual logic)
+      await new Promise((resolve) => setTimeout(resolve, 2000)); 
+      console.log("File uploaded:", uploadedFile); 
+
+      setIsLoading(false);
+      setShowRelatorio(false); // Hide Relatorio after upload
     } catch (error) {
       console.error("Erro ao carregar relatório:", error);
-      setUploadError(error.message); // Exibir mensagem de erro
-      setIsLoading(false); // Carregamento finalizado
+      setUploadError(error.message);
+      setIsLoading(false);
     }
   };
 
@@ -43,20 +57,21 @@ const SolicitacaoEspecifica = ({ id, client, date, status, forms }) => {
         <Data>{date}</Data>
       </Header>
 
-      <Status>{status}</Status>
+      <Status style={{ color: getColor(status) }}>{status}</Status>
+
       <Forms>{forms}</Forms>
 
       <Dados>Dados do Cliente</Dados>
 
       <BotoesContainer>
-        <Button id="Relatorio" onClick={() => setShowRelatorio(true)}>
-          Enviar Relatório
-        </Button>
+        {!showRelatorio && (
+          <Button id="Relatorio" onClick={() => setShowRelatorio(true)}>
+            Enviar Relatório
+          </Button>
+        )}
+
         {showRelatorio && (
-          <Relatorio
-            onUpload={handleRelatorio}
-            setShowRelatorio={setShowRelatorio}
-          />
+          <Relatorio onUpload={handleRelatorio} setShowRelatorio={setShowRelatorio} />
         )}
         <DownloadButton id="Arquivos Download">Download</DownloadButton>
       </BotoesContainer>
