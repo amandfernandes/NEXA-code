@@ -31,7 +31,6 @@ const TableSolicitacao = ({ requests }) => {
               <Th>Formulário</Th>
               <Th>Status</Th>
               <Th>Download</Th>
-              <Th>Histórico</Th>
               <Th>Acessar</Th>
             </Tr>
           </thead>
@@ -45,7 +44,6 @@ const TableSolicitacao = ({ requests }) => {
                   <Td>{request.forms}</Td>
                   <Td style={{ color: getColor(request.status) }}>{request.status}</Td>
                   <Td><FiDownloadCloud /></Td>
-                  <Td>{request.action}</Td>
                   <Td><Link to={"/solicitacao/"+request.id}><Button><FaUpRightAndDownLeftFromCenter size={'15'}/></Button></Link></Td>
                 </Tr>
               ))

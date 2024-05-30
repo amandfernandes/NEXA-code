@@ -5,6 +5,7 @@ import Base from "./Base";
 import data from '../data/Solicitacoes.json';
 import action from '../data/Historico.json';
 import DashboardSolicitacao from "../components/DashboardSolicitacao/DashboardSolicitacao";
+import Download from "../components/Download/Download";
 
 const SolicitacaoComponent = () => {
   const { id } = useParams();
@@ -21,6 +22,7 @@ const SolicitacaoComponent = () => {
         solicitacoes={[solicitacao]}
         historicos={historicos}
       />
+      <Download/>
     </Base>
   );
 };
