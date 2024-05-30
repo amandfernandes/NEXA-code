@@ -51,7 +51,11 @@ const TableSolicitacao = ({ requests, currentPage, setCurrentPage, requestsPerPa
                   <Td>{request.forms}</Td>
                   <Td style={{ color: getColor(request.status) }}>{request.status}</Td>
                   <Td><FiDownloadCloud /></Td>
+<<<<<<< HEAD
                   <Td><Link to={"/solicitacao/" + request.id}><Button><FaUpRightAndDownLeftFromCenter size={'15'} /></Button></Link></Td>
+=======
+                  <Td><Link to={"/solicitacao/"+request.id}><Button><FaUpRightAndDownLeftFromCenter size={'15'}/></Button></Link></Td>
+>>>>>>> 3e91d767cdd4bed2b7468b133252e37a006393fc
                 </Tr>
               ))
             ) : (
