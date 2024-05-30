@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import requestsData from '../data/Solicitacoes.json';
 import FiltroForms from '../components/FiltroForms/FiltroForms';
 import Base from './Base';
-<<<<<<< HEAD
 import Search from '../components/Search/Search'; 
 import TableSolicitacao from '../components/TableSolicitacao/TableSolicitacao';
 
@@ -39,28 +38,6 @@ function Servicos() {
     setSelectedForm(null); 
     setFilteredData(originalData); 
     setCurrentPage(1); // Resetar página ao remover filtro
-=======
-import Search from '../components/Search/Search';
-
-function Servicos() {
-  const [originalData] = useState(requestsData);
-  const [filteredData, setFilteredData] = useState(originalData);
-
-  // Aplica o filtro do SearchForm aos dados já filtrados pelo FiltroForms
-  const handleSearch = (results) => {
-    setFilteredData(results);
-  };
-
-
-  // Aplica o filtro do FiltroForms
-  const handleFilterChange = (newData) => {
-    setFilteredData(newData);
-  };
-
-  // Remove todos os filtros
-  const handleFilterRemove = () => {
-    setFilteredData(originalData);
->>>>>>> 3e91d767cdd4bed2b7468b133252e37a006393fc
   };
 
   return (
@@ -71,7 +48,6 @@ function Servicos() {
         onFilterRemove={handleFilterRemove}
         selectedForm={selectedForm}
       />
-<<<<<<< HEAD
       <Search 
         requests={selectedForm ? filteredData : originalData} // Passar o array correto para a pesquisa
         onSearch={handleSearch} 
@@ -82,12 +58,7 @@ function Servicos() {
         setCurrentPage={setCurrentPage} 
         requestsPerPage={requestsPerPage} 
       /> 
-=======
-      <Search requests={originalData} onSearch={handleSearch} />
-      <TableSolicitacao requests={filteredData} />
->>>>>>> 3e91d767cdd4bed2b7468b133252e37a006393fc
     </Base>
   );
 }
-
 export default Servicos;
