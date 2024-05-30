@@ -2,19 +2,10 @@ import React, { useState } from 'react';
 
 import { Filtro } from './Style';
 
-const FiltroForms = ({ requests, setFilteredRequests }) => {
-  const [selectedForm, setSelectedForm] = useState('');
+const FiltroForms = ({ requests, setFilteredRequests, onFilterRemove, selectedForm }) => {
 
-  const handleButtonClick = (event, form) => {
-    const value = event.target.value;
-    if (selectedForm === value) {
-      setSelectedForm('');
-      setFilteredRequests(requests);
-    } else {
-      setSelectedForm(value);
-      const filtered = requests.filter((request) => request.forms === value);
-      setFilteredRequests(filtered);
-    }
+  const handleFilterChange = (event, form) => {
+    setFilteredRequests(event, form);
   };
 
   return (
@@ -24,12 +15,15 @@ const FiltroForms = ({ requests, setFilteredRequests }) => {
           <button
             key={form}
             value={form}
-            onClick={(e) => handleButtonClick(e, form)}
+            onClick={(e) => handleFilterChange(e, form)} // Chamar a função correta
             isActive={selectedForm === form}
           >
             {form}
           </button>
         ))}
+        {selectedForm && (
+          <button onClick={onFilterRemove}>Remover Filtro</button>
+        )}
       </Filtro>
     </div>
   );

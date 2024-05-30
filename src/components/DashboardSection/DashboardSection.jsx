@@ -12,7 +12,7 @@ const DashboardSection = ({ filteredSolicitacao, filteredHistorico }) => (
       <Cards>
         {filteredSolicitacao.map((item) => (
           <CardSolicitacao
-            key={item.id}
+            key={item.date} // Use a data como chave
             id={item.id}
             client={item.client}
             date={item.date}
@@ -29,11 +29,11 @@ const DashboardSection = ({ filteredSolicitacao, filteredHistorico }) => (
       <Cards>
         {filteredHistorico.map((itens) => (
           <HistoricoCard
-            key={itens.time}
+            key={itens.date}
             id={itens.id}
             action={itens.action}
             status={itens.status}
-            time={itens.time}
+            time={itens.date}
             forms={itens.forms}
           />
         ))}
