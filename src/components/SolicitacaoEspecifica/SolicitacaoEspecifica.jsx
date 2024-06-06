@@ -1,6 +1,6 @@
-// SolicitacaoEspecifica.jsx
 import React, { useState } from "react";
-import Relatorio from "../Relatorio/Relatorio"; 
+import Relatorio from "../Relatorio/Relatorio";
+import DownloadImages from "../Download/Download";
 import {
   Container,
   Header,
@@ -33,13 +33,14 @@ const SolicitacaoEspecifica = ({ id, client, date, status, forms }) => {
   const [uploadError, setUploadError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showRelatorio, setShowRelatorio] = useState(false);
+  const [showDownload, setShowDownload] = useState(false);
 
   const handleRelatorio = async (uploadedFile) => {
     setIsLoading(true);
     try {
       // Simulate uploading the file (replace with actual logic)
-      await new Promise((resolve) => setTimeout(resolve, 2000)); 
-      console.log("File uploaded:", uploadedFile); 
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      console.log("File uploaded:", uploadedFile);
 
       setIsLoading(false);
       setShowRelatorio(false); // Hide Relatorio after upload
@@ -48,6 +49,14 @@ const SolicitacaoEspecifica = ({ id, client, date, status, forms }) => {
       setUploadError(error.message);
       setIsLoading(false);
     }
+  };
+
+  const handleDownload = () => {
+    setShowDownload(true);
+  };
+
+  const handleCancel = () => {
+    setShowDownload(false);
   };
 
   return (
@@ -73,7 +82,16 @@ const SolicitacaoEspecifica = ({ id, client, date, status, forms }) => {
         {showRelatorio && (
           <Relatorio onUpload={handleRelatorio} setShowRelatorio={setShowRelatorio} />
         )}
-        <DownloadButton id="Arquivos Download">Download</DownloadButton>
+
+        {!showDownload && (
+          <DownloadButton id="Arquivos Download" onClick={handleDownload}>
+            Download
+          </DownloadButton>
+        )}
+
+        {showDownload && (
+          <DownloadImages handleCancel={handleCancel} />
+        )}
       </BotoesContainer>
 
       {uploadError && <ErrorMessage>{uploadError}</ErrorMessage>}

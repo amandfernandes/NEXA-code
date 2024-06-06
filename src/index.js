@@ -9,7 +9,6 @@ import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 import { auth } from "./config/Firebase";
 import { onAuthStateChanged } from "firebase/auth";
-
 import Servicos from "./pages/Servicos";
 import Solicitacao from "./pages/Solicitacao";
 
