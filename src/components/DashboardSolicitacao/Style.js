@@ -15,6 +15,13 @@ export const SSolicitacao = styled.div`
   justify-content: space-between;
   width: 50%;
 `;
+export const SClientes = styled.div`
+  padding: 1px;
+  border-radius: 8px;
+  justify-content: space-between;
+  width: 50%;
+`;
+
 
 export const H2 = styled.h2`
   font-size: 18px;

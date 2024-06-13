@@ -29,7 +29,7 @@ const getColor = (status) => {
   }
 };
 
-const SolicitacaoEspecifica = ({ id, client, date, status, forms }) => {
+const SolicitacaoEspecifica = ({ id, client, date, status, forms, nome, contato, endereco }) => {
   const [uploadError, setUploadError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showRelatorio, setShowRelatorio] = useState(false);
@@ -71,6 +71,10 @@ const SolicitacaoEspecifica = ({ id, client, date, status, forms }) => {
       <Forms>{forms}</Forms>
 
       <Dados>Dados do Cliente</Dados>
+
+      <div>Nome: {nome}</div>
+      <div>Contato: {contato}</div>
+      <div>Endereço: {endereco}</div>
 
       <BotoesContainer>
         {!showRelatorio && (

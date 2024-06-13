@@ -4,7 +4,7 @@ import SolicitacaoEspecifica from '../SolicitacaoEspecifica/SolicitacaoEspecific
 import HistoricoCard from "../HistoricoCard/HistoricoCard"
 import { Section, SSolicitacao, H2, SHistorico } from './Style';
 
-const DashboardSolicitacao = ({ solicitacoes, historicos }) => (
+const DashboardSolicitacao = ({ solicitacoes, historicos, clientes }) => (
   <Section>
     <SSolicitacao>
       {solicitacoes && solicitacoes.map((solicitacao) => (
@@ -18,6 +18,7 @@ const DashboardSolicitacao = ({ solicitacoes, historicos }) => (
         />
       ))}
     </SSolicitacao>
+    
     <SHistorico>
       {historicos && historicos.map((historico) => (
         <HistoricoCard
@@ -34,3 +35,15 @@ const DashboardSolicitacao = ({ solicitacoes, historicos }) => (
 );
 
 export default DashboardSolicitacao;
+/**
+ <SClientes>
+      {clientes && clientes.map((cliente) => (
+        <DadosClientes
+          nome={cliente.nome}
+          contato={cliente.contato}
+          endereco={cliente.endereco}
+        />
+      ))}
+    </SClientes>
+
+ */

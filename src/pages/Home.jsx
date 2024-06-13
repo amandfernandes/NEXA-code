@@ -9,6 +9,7 @@ Deve conter:
 import React, { useState } from 'react';
 import data from '../data/Solicitacoes.json';
 import action from '../data/Historico.json';
+import clientes from '../data/Clientes.json';
 import FiltroForms from '../components/FiltroForms/FiltroForms';
 import DashboardSection from '../components/DashboardSection/DashboardSection';
 import Base from './Base';
@@ -16,6 +17,7 @@ import Base from './Base';
 const Home = () => {
   const [originalSolicitacao, setOriginalSolicitacao] = useState(data);
   const [originalHistorico, setOriginalHistorico] = useState(action);
+  const [originalCliente, setOriginalCliente] = useState(clientes);
   const [filteredSolicitacao, setFilteredSolicitacao] = useState([]);
   const [filteredHistorico, setFilteredHistorico] = useState([]);
   const [selectedForm, setSelectedForm] = useState('');
