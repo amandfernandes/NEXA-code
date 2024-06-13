@@ -3,7 +3,7 @@
 import { Link } from "react-router-dom";
 import { Top } from "./Style";
 import { HiUser } from "react-icons/hi";
-import UserDropdown from "../Dropdown/Dropdown";
+import Dropdown from "../Dropdown/Dropdown";
 
 const Header = () => (
   <Top>
