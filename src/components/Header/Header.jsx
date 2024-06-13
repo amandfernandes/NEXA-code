@@ -1,8 +1,9 @@
 /* Esse componente vai tratar do header */
 
 import { Link } from "react-router-dom";
-import { Top } from "./Style";
-import { HiUser } from "react-icons/hi";
+import { Top } from "./Style"; // Importa o estilo do arquivo Style.js
+import { HiUser } from "react-icons/hi"; // Importa o ícone de usuário
+import Dropdown from '../Dropdown/Dropdown.jsx'; // Importa o componente Dropdown
 
 const Header = () => (
   <Top>
@@ -14,8 +15,8 @@ const Header = () => (
     </div>
 
     <div id="Login">
-      <Link to="/login"><HiUser size={'20'}/></Link>
-     {/* { window.sessionStorage.getItem('accessToken')
+      <Dropdown /> {/* Renderiza o componente Dropdown */}
+      {/* { window.sessionStorage.getItem('accessToken')
           ? <Link to="/logout">Logout</Link>
           : <Link to="/login">Login</Link>
           }*/}

@@ -1,14 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { HiArrowCircleRight } from "react-icons/hi";
-import { DSection, Section, H2, Cards, Button, Card } from './Style';
+import { DSection, Section, H2, Cards, Button, SectionHalf, SectionHalfContent, LinkButton} from './Style';
 import CardSolicitacao from '../CardSolicitacao/CardSolicitacao';
 import HistoricoCard from '../HistoricoCard/HistoricoCard';
+import RequestStatus from '../RequestStatus/RequestStatus'; // Importe o componente RequestStatus
+import { TiArrowMaximise } from 'react-icons/ti';
 
-const DashboardSection = ({ filteredSolicitacao, filteredHistorico }) => (
-  <DSection>
+const DashboardSection = ({ filteredSolicitacao, filteredHistorico, originalSolicitacao }) => ( 
+  // Adicione originalSolicitacao como prop
+  <DSection> {/* Agora DSection está definido */}
     <Section>
-      <H2>ÚLTIMAS SOLICITAÇÕES</H2>
+      <H2>ÚLTIMAS SOLICITAÇÕES
+        <LinkButton to={"/servicos"}><Button><TiArrowMaximise size={'25'} /></Button></LinkButton>
+      </H2>
       <Cards>
         {filteredSolicitacao.map((item) => (
           <CardSolicitacao
@@ -20,25 +25,32 @@ const DashboardSection = ({ filteredSolicitacao, filteredHistorico }) => (
             forms={item.forms}
           />
         ))}
-          <Link to={"/servicos"}><Button><HiArrowCircleRight size={'100'} /></Button></Link>
       </Cards>
     </Section>
 
-    <Section>
-      <H2>ÚLTIMAS ATUALIZAÇÕES</H2>
-      <Cards>
-        {filteredHistorico.map((itens) => (
-          <HistoricoCard
-            key={itens.date}
-            id={itens.id}
-            action={itens.action}
-            status={itens.status}
-            time={itens.date}
-            forms={itens.forms}
-          />
-        ))}
-      </Cards>
-    </Section>
+    <SectionHalf>
+      <SectionHalfContent>
+        <H2>ÚLTIMAS ATUALIZAÇÕES</H2>
+        <Cards>
+          {filteredHistorico.map((itens) => (
+            <HistoricoCard
+              key={itens.date}
+              id={itens.id}
+              action={itens.action}
+              status={itens.status}
+              time={itens.date}
+              forms={itens.forms}
+            />
+          ))}
+        </Cards>
+      </SectionHalfContent>
+
+      <SectionHalfContent>
+        <H2>STATUS DAS SOLICITAÇÕES</H2>
+        <RequestStatus requestsData={originalSolicitacao} /> {/* Passe originalSolicitacao */}
+      </SectionHalfContent>
+    </SectionHalf>
+
   </DSection>
 );
 
