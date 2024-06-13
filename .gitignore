@@ -40,6 +40,7 @@ sketch
 
 # ignora os arquivos de distribuição
 dist
+build
 
 # ignora arquivo .env (environment variables)
 .env
