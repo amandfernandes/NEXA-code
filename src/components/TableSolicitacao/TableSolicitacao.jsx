@@ -4,6 +4,7 @@ import { FiDownloadCloud, FiUploadCloud } from "react-icons/fi";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { Table, Th, Td, Tr, Button, TableContainer, PaginationContainer } from './Style';
 import { Link } from "react-router-dom";
+import Relatorio from '../Relatorio/Relatorio';
 
 const TableSolicitacao = ({ requests, currentPage, setCurrentPage, requestsPerPage }) => {
   const [sortedRequests, setSortedRequests] = useState(requests); // Estado para a lista ordenada
