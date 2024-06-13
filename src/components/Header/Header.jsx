@@ -3,6 +3,7 @@
 import { Link } from "react-router-dom";
 import { Top } from "./Style";
 import { HiUser } from "react-icons/hi";
+import UserDropdown from "../Dropdown/Dropdown";
 
 const Header = () => (
   <Top>
@@ -11,11 +12,13 @@ const Header = () => (
     <div id="Nave">
       <Link to="/">Home</Link>
       <Link to="/servicos">Serviços</Link>
+
+      <UserDropdown><HiUser size={'20'}/></UserDropdown>
     </div>
 
     <div id="Login">
-      <Link to="/login"><HiUser size={'20'}/></Link>
-     {/* { window.sessionStorage.getItem('accessToken')
+      <Dropdown /> {/* Renderiza o componente Dropdown */}
+      {/* { window.sessionStorage.getItem('accessToken')
           ? <Link to="/logout">Logout</Link>
           : <Link to="/login">Login</Link>
           }*/}
