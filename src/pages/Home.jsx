@@ -10,7 +10,7 @@ import React, { useState } from 'react';
 import data from '../data/Solicitacoes.json';
 import action from '../data/Historico.json';
 import FiltroForms from '../components/FiltroForms/FiltroForms';
-import DashboardSection from '../components/DashboardSection/DashboardSection';
+import DashboardSection from '../components/DashboardSection/DashboardSection'; // Importe o DashboardSection
 import Base from './Base';
 
 const Home = () => {
@@ -80,9 +80,10 @@ const Home = () => {
         onFilterRemove={handleFilterRemove} // Passar a função para o FiltroForms
         selectedForm={selectedForm}
       />
-      <DashboardSection
+      <DashboardSection 
         filteredSolicitacao={filteredSolicitacao}
         filteredHistorico={filteredHistorico}
+        originalSolicitacao={originalSolicitacao} // Passe originalSolicitacao
       />
     </Base>
   );

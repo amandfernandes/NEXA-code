@@ -17,8 +17,8 @@ const Header = () => (
     </div>
 
     <div id="Login">
-      <Link to="/login"><HiUser size={'20'}/></Link>
-     {/* { window.sessionStorage.getItem('accessToken')
+      <Dropdown /> {/* Renderiza o componente Dropdown */}
+      {/* { window.sessionStorage.getItem('accessToken')
           ? <Link to="/logout">Logout</Link>
           : <Link to="/login">Login</Link>
           }*/}

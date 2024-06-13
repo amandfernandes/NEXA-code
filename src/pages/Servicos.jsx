@@ -1,59 +1,37 @@
-/* Essa Página deve apresentar todas as solicitações feitas */
 import React, { useState } from 'react';
 import requestsData from '../data/Solicitacoes.json';
-import FiltroForms from '../components/FiltroForms/FiltroForms';
 import Base from './Base';
-import Search from '../components/Search/Search'; 
-import TableSolicitacao from '../components/TableSolicitacao/TableSolicitacao';
+import TableSolicitacao from '../components/TableSolicitacao/TableSolicitacao'; 
+import FiltroForms from '../components/FiltroForms/FiltroForms';
 
 function Servicos() {
-  const [originalData] = useState(requestsData);
-  const [filteredData, setFilteredData] = useState(originalData); 
-  const [selectedForm, setSelectedForm] = useState(null); 
+  const [originalData] = useState(requestsData); 
   const [currentPage, setCurrentPage] = useState(1);
   const [requestsPerPage] = useState(10); 
+  const [filteredRequests, setFilteredRequests] = useState(requestsData); 
+  const [selectedForm, setSelectedForm] = useState(null); 
 
-  const handleSearch = (results) => {
-    setFilteredData(results);
-    setCurrentPage(1); // Resetar página ao pesquisar
+  const handleFilterChange = (filteredRequests) => { 
+    setFilteredRequests(filteredRequests); 
   };
 
-  const handleFilterChange = (event, form) => {
-    const value = event.target.value;
-
-    if (selectedForm === value) {
-      setSelectedForm(null); 
-      setFilteredData(originalData); 
-      setCurrentPage(1); // Resetar página ao remover filtro
-    } else {
-      setSelectedForm(value);
-      const filteredRequests = originalData.filter(request => request.forms === value);
-      setFilteredData(filteredRequests);
-      setCurrentPage(1); // Resetar página ao aplicar filtro
-    }
-  };
-
-  // Função de tratamento de remoção de filtro
   const handleFilterRemove = () => {
-    setSelectedForm(null); 
-    setFilteredData(originalData); 
-    setCurrentPage(1); // Resetar página ao remover filtro
+    setSelectedForm(null);
+    setFilteredRequests(originalData);
   };
 
   return (
     <Base>
+      {/* Passa o componente Filtro para a página */}
       <FiltroForms
-        requests={originalData}
-        setFilteredRequests={handleFilterChange}
-        onFilterRemove={handleFilterRemove}
-        selectedForm={selectedForm}
+        requests={originalData} 
+        onFilterChange={(filteredRequests) => handleFilterChange(filteredRequests)} 
+        onFilterRemove={handleFilterRemove} 
+        selectedForm={selectedForm} 
+        setFilteredRequests={setFilteredRequests} 
       />
-      <Search 
-        requests={selectedForm ? filteredData : originalData} // Passar o array correto para a pesquisa
-        onSearch={handleSearch} 
-      /> 
       <TableSolicitacao 
-        requests={filteredData} 
+        requests={filteredRequests} 
         currentPage={currentPage} 
         setCurrentPage={setCurrentPage} 
         requestsPerPage={requestsPerPage} 
