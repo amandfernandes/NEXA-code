@@ -4,7 +4,7 @@ export const RequestStatusContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #F5F5F5;
+  background-color: transparent;
   width: 75%; /* Reduced width */
   height: auto; /* Reduced height */
   padding: 1px; /* Reduced padding */

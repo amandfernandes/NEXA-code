@@ -12,8 +12,6 @@ const Header = () => (
     <div id="Nave">
       <Link to="/">Home</Link>
       <Link to="/servicos">Serviços</Link>
-
-      <UserDropdown><HiUser size={'20'}/></UserDropdown>
     </div>
 
     <div id="Login">

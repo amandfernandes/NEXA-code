@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import { FaUpRightAndDownLeftFromCenter } from "react-icons/fa6";
-import { FiDownloadCloud, FiUploadCloud } from "react-icons/fi";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
-import { Table, Th, Td, Tr, Button, TableContainer, PaginationContainer } from './Style';
+import { Table, Th, Td, Tr, Button, TableContainer, PaginationContainer, SearchForm, SearchInput, SearchIcon, Filtro, filterContainer } from './Style';
 import { Link } from "react-router-dom";
-import Search from '../Search/Search';
 import DownloadUpload from '../DownloadUpload/DownloadUpload'; // Importando o componente DownloadUpload
-
+import { IoIosSearch } from 'react-icons/io'; // Importando o ícone de pesquisa
 
 const TableSolicitacao = ({ requests, currentPage, setCurrentPage, requestsPerPage }) => {
-  const [sortedRequests, setSortedRequests] = useState(requests);
   const [sortOrder, setSortOrder] = useState('asc');
-  const [filteredRequests, setFilteredRequests] = useState(requests);
-  const [showRelatorio, setShowRelatorio] = useState(false);
+  const [filteredAndSortedRequests, setFilteredAndSortedRequests] = useState(Object.values(requests)); 
+  const [searchTerm, setSearchTerm] = useState(''); // Estado para o termo de pesquisa
+  const [selectedForms, setSelectedForms] = useState([]); // Estado para os formulários selecionados
 
   const getColor = (status) => {
     switch (status) {
@@ -27,30 +25,27 @@ const TableSolicitacao = ({ requests, currentPage, setCurrentPage, requestsPerPa
     }
   };
 
-  // Lógica de paginação (adaptada para objetos JSON)
-  const totalRequests = Object.keys(filteredRequests).length;
+  // Lógica de paginação 
+  const totalRequests = filteredAndSortedRequests.length;
   const indexOfLastRequest = currentPage * requestsPerPage;
   const indexOfFirstRequest = indexOfLastRequest - requestsPerPage;
-
-  // Filtra as solicitações para a página atual
-  const currentRequests = Object.entries(filteredRequests)
-    .slice(indexOfFirstRequest, indexOfLastRequest)
-    .map(([key, value]) => value);
+  const currentRequests = filteredAndSortedRequests
+    .slice(indexOfFirstRequest, indexOfLastRequest);
 
   // Função para ordenar a tabela
   const handleSort = () => {
     setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-    const sorted = {...sortedRequests};
+    const sorted = [...filteredAndSortedRequests]; // Clone do estado principal
 
-    // Ordena as solicitações dentro do objeto
-    const sortedEntries = Object.entries(sorted).sort((a, b) => {
+    // Ordena a matriz
+    sorted.sort((a, b) => {
       const priority = {
         'Pending': 1,
         'Progress': 2,
         'Concluded': 3
       };
-      const statusA = priority[a[1].status];
-      const statusB = priority[b[1].status];
+      const statusA = priority[a.status];
+      const statusB = priority[b.status];
 
       if (sortOrder === 'asc') {
         return statusA - statusB;
@@ -59,37 +54,92 @@ const TableSolicitacao = ({ requests, currentPage, setCurrentPage, requestsPerPa
       }
     });
 
-    // Atualiza o objeto JSON com as solicitações ordenadas
-    sortedEntries.forEach(([key, value]) => {
-      sorted[key] = value;
-    });
+    // Atualiza o estado principal com os dados ordenados
+    setFilteredAndSortedRequests(sorted); 
+  };
 
-    setSortedRequests(sorted);
-    setFilteredRequests(sorted);
+  // Função para filtrar os dados
+  const handleSearch = (term) => {
+    setSearchTerm(term); // Atualiza o termo de pesquisa no estado
+
+    // Se o termo de pesquisa estiver vazio, resetar o estado para o array original
+    if (term.trim() === '') {
+      setFilteredAndSortedRequests(Object.values(requests)); // Restaura os dados originais
+    } else {
+      const terms = term.trim().toLowerCase().split(' ');
+      const results = Object.values(requests).filter((request) => {
+        return terms.every((search) => {
+          return (
+            request.client.toLowerCase().includes(search) ||
+            request.id.toString().includes(search) ||
+            request.forms.toLowerCase().includes(search) ||
+            request.status.toLowerCase().includes(search) ||
+            // Converta a data para timestamp e compare com o termo de pesquisa
+            Date.parse(request.date) === Date.parse(search) 
+          );
+        });
+      });
+      setFilteredAndSortedRequests(results); // Atualiza o estado com os resultados filtrados
+    }
+  };
+
+  // Função para filtrar por formulário
+  const handleFormFilter = (form) => {
+    if (form === 'Remover Filtros') { // Verifica se o botão clicado é o de remover filtros
+      setSelectedForms([]); // Limpa a lista de formulários selecionados
+      setFilteredAndSortedRequests(Object.values(requests)); // Restaura os dados originais
+    } else {
+      const newSelectedForms = selectedForms.includes(form)
+        ? selectedForms.filter((f) => f !== form)
+        : [...selectedForms, form];
+  
+      setSelectedForms(newSelectedForms);
+  
+      const filteredRequests = requests.filter((request) => {
+        if (newSelectedForms.length === 0) {
+          return true;
+        }
+        return newSelectedForms.some((selectedForm) => request.forms.toLowerCase().includes(selectedForm.toLowerCase()));
+      });
+  
+      setFilteredAndSortedRequests(filteredRequests);
+    }
   };
 
   // Funções para mudar a página
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  // Função para aplicar a pesquisa
-  const handleSearch = (results) => {
-    setFilteredRequests(results);
-  };
-
-  // Função para lidar com o upload do relatório
-  const handleUpload = async (file) => {
-    // Lógica para lidar com o upload do arquivo (ex: enviar para um servidor)
-    console.log('Arquivo enviado:', file);
-  };
-
-  const handleCancel = () => {
-    setShowRelatorio(false);
-  };
-
   return (
     <div>
-      {/* Componente de pesquisa */}
-      <Search requests={sortedRequests} onSearch={handleSearch} />
+      <div className="filter-container"> {/* Novo container para os botões de filtro */}
+        <Filtro> 
+          {['Dosimetria Clínica', 'Dosimetria Pré-Clínica', 'Modelagem Computacional', 'Segmentação e Quantificação', 'Radiosinoviortese'].map(
+            (form) => (
+              <button
+                key={form}
+                onClick={() => handleFormFilter(form)}
+                className={selectedForms.includes(form) ? 'active' : ''}
+              >
+                {form}
+              </button>
+            )
+          )}
+          {/* <button onClick={() => setSelectedForms([])}>Remover Filtros</button> */} {/* Removendo o botão "Remover Filtros" */}
+        </Filtro>
+      </div>
+
+      <SearchForm>
+        <SearchInput
+          type="text"
+          id="search"
+          value={searchTerm}
+          onChange={(e) => handleSearch(e.target.value)}
+          placeholder="Pesquise por cliente, ID, status ou data"
+        />
+        <SearchIcon onClick={() => handleSearch(searchTerm)}> 
+          <IoIosSearch /> 
+        </SearchIcon>
+      </SearchForm>
 
       <TableContainer>
         <Table>
