@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import data from '../data/Solicitacoes.json';
-import action from '../data/Historico.json';
+import action from '../data/historicos.json';
 import DashboardSection from '../components/DashboardSection/DashboardSection';
 import Base from './Base';
 

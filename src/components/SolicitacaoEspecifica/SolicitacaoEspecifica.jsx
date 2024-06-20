@@ -70,11 +70,9 @@ const SolicitacaoEspecifica = ({ id, client, date, status, forms, nome, contato,
 
       <Forms>{forms}</Forms>
 
-      <Dados>Dados do Cliente</Dados>
+      <Dados> Dados do Cliente </Dados>
+      <Forms><strong>Injetected: </strong>40</Forms>
 
-      <div>Nome: {nome}</div>
-      <div>Contato: {contato}</div>
-      <div>Endereço: {endereco}</div>
 
       <BotoesContainer>
         {!showRelatorio && (

@@ -48,3 +48,23 @@ width: 25%;
 display: flex;
 flex-direction: column;
 `;
+
+export const Button = styled.button`
+  background-color: #001354; 
+  border: 1px solid #001354;
+  color: #fff;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 15px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #001354; /* Darker green */
+    color:#ffff;
+  }
+`;

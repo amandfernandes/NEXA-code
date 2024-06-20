@@ -11,7 +11,6 @@ const SolicitacaoComponent = () => {
   const { id } = useParams();
   const solicitacao = data.find((solicitacao) => solicitacao.id === id);
   const historicos = action.filter((historico) => historico.id === id);
-  const clientes = client.filter((clientes) => clientes.idSolicitacao === id);
 
   if (!solicitacao) {
     return <p>Solicitação não encontrada</p>;

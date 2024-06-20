@@ -1,4 +1,3 @@
-// DashboardSolicitacao.js
 import React from 'react';
 import SolicitacaoEspecifica from '../SolicitacaoEspecifica/SolicitacaoEspecifica';
 import HistoricoCard from "../HistoricoCard/HistoricoCard"
@@ -35,15 +34,3 @@ const DashboardSolicitacao = ({ solicitacoes, historicos, clientes }) => (
 );
 
 export default DashboardSolicitacao;
-/**
- <SClientes>
-      {clientes && clientes.map((cliente) => (
-        <DadosClientes
-          nome={cliente.nome}
-          contato={cliente.contato}
-          endereco={cliente.endereco}
-        />
-      ))}
-    </SClientes>
-
- */
